@@ -1,0 +1,638 @@
+open cmd
+  |
+  v 
+ login your mysql account
+ |
+ V  
+#mysql -u root -p  
+> password : 123456
+-------------------------
+ check all databases :
+
+>show databases;
+
+>create database 18junedb;
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| 18junedb           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+
+=====================================================
+for Ex.,
+                 zomato  
+                   |
+                   V 
+ customer   rest     rider     feedback
+
+ ----------------------------------------------
+ # use <Databasename>;
+
+ mysql> use 18junedb;
+ database changed   
+
+--------------------------------------------------
+table creation :
+
+  syntax:
+    create table <tablename>
+    (
+        fieldname  datatype,
+        fieldname  datatype,
+        fieldname  datatype
+        .
+        .
+    );
+
+for ex.,
+
+mysql> CREATE TABLE STUDENT
+    -> (
+    -> ID INT,
+    -> NAME VARCHAR(20)
+    -> );
+Query OK, 0 rows affected (0.09 sec)
+
+----show table details :
+
+mysql> DESC STUDENT;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| ID    | int         | YES  |     | NULL    |       |
+| NAME  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+
+DDL :  command :
+    1) CREATE
+    2) ALTER
+    3) TRUNCATE
+    4) DROP
+
+------------------------------------
+delete :
+
+4) DROP : to remove database and remove table
+    
+    #drop table <tablename>;
+    #drop database <Databasename>;
+
+mysql>  DROP TABLE STUDENT;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> DESC STUDENT;
+ERROR 1146 (42S02): Table '18junedb.student' doesn't exist
+mysql> DROP DATABASE 18junedb;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax;
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+
+=============================================================
+2) ALTER : alter command mainly use to restructure of table.
+
+ using of alter command we can modify column name, 
+ datatype, we can add new column we can drop existing
+  column using of alter command.
+
+  C:\Users\pramukh>mysql -u root -p
+Enter password: ******
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| kumkum             |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.04 sec)
+
+use kumkum;
+
+mysql> create table student
+    -> (
+    -> id int,
+    -> name varchar(20)
+    -> );
+
+    requirement of new column
+
+  syntax: alter table <tablename> add <columnname> <datatype>;  
+  mysql> alter table student add email varchar(20);
+
+   mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
+| email | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+   for remove any unwanted field or column 
+
+mysql> alter table student drop email;
+Query OK, 0 rows affected (0.21 sec)
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+alter table student add email varchar(20) first;
+> desc student;
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| email | varchar(20) | YES  |     | NULL    |       |
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+alter table student add email varchar(20) after id;
+desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id | int | YES  |     | NULL    |       |
+| email    | varchar(20)        | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table student modify email varchar(40);
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| email | varchar(40) | YES  |     | NULL    |       |
+| id    | int         | YES  |     | NULL    |       |
+| name  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+> alter table student change name email varchar(40);
+======================================================
+3) TRUNCATE : TRUNCATE command which mainly use to remove all 
+              rows from the table.
+
+in a simple language we can say that TRUNCATE command remove all 
+from the table.
+
+difference between drop and TRUNCATE.
+
+drop : completly remove table from the database.
+ 
+    after execution of drop command we can't find out table in memory.
+
+TRUNCATE : using of TRUNCATE we can just deleting records from the table not 
+         destroying table from the database.
+
+  drop : remove data, remove structure ,remove table
+
+  TRUNCATE : remove data, remain structure as it is and remain table as it is.
+
+  syntax : TRUNCATE table <tablename>
+
+
+// all table remove, regenarate table reset counter from 1.
+  e.g.,
+
+     id      name      subject      
+     1       Anjali    python
+     2       mittal    java 
+    
+     4
+
+     by defualt increment by 1 when we execute TRUNCATE command 
+     it reset counter from 1.
+
+==================================================================================
+==================================================================================
+2) DML command : DML command stands for data modification language.
+
+ using of dml commands we can add , remove and update rwcords in table.
+
+    i) INSERT
+    ii) UPDATE 
+    III) DELETE
+
+ i) INSERT : whenever we want to store new records in existing 
+             table we have to execute insert command.
+
+        using insert we can insert one or many records at a time.
+
+        there are various way to execute insert command.
+
+        1) traditional way : 
+
+             INSERT INTO <TABLENAME>
+             (column1,column2....)
+             values (......);    
+
+mysql> desc STUDENT;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| ID    | int         | YES  |     | NULL    |       |
+| EMAIL | varchar(30) | YES  |     | NULL    |       |
+| NAME  | varchar(50) | YES  |     | NULL    |       |
+| PHONE | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+mysql> INSERT INTO STUDENT
+    -> (ID,NAME,EMAIL)
+    -> VALUES
+    -> (2,'MITTAL','b@gmail.com'),
+    -> (3,'Riddhi','c@gmail.com');
+Query OK, 2 rows affected (0.03 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from STUDENT;
++------+-------------+-------------+-------+
+| ID   | EMAIL       | NAME        | PHONE |
++------+-------------+-------------+-------+
+|    1 | kumkum      | a@gmail.com | NULL  |
+|    2 | b@gmail.com | MITTAL      | NULL  |
+|    3 | c@gmail.com | Riddhi      | NULL  |
++------+-------------+-------------+-------+
+3 rows in set (0.00 sec)
+
+mysql> TRUNCATE TABLE STUDENT;
+Query OK, 0 rows affected (0.13 sec)
+
+mysql>  INSERT INTO STUDENT
+    -> (ID,NAME,EMAIL)
+    ->  VALUES
+    -> (1,'KUMKUM','a@gmail.com'),
+    -> (2,'MITTAL','b@gmail.com'),
+    -> (3,'RIDDHI','c@gmail.com');
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM STUDENT;
+
+====================================================================
+multiple enteries:
+  
+   syntax : 
+      insert into student 
+      (id,email,name,phone)
+      values
+      (5,'d@gmail.com','minal',345678954),
+      (6,'e@gmail.com','minal',345678954);
+
++------+-------------+--------+-------+
+| ID   | EMAIL       | NAME   | PHONE |
++------+-------------+--------+-------+
+|    1 | a@gmail.com | KUMKUM | NULL  |
+|    2 | b@gmail.com | MITTAL | NULL  |
+|    3 | c@gmail.com | RIDDHI | NULL  |
++------+-------------+--------+-------+
+
+=======================================================
+ii) UPDATE : to update or modify existing field in table  
+    using of update command.
+
+     syntax : 
+
+       UPDATE <tablename>
+       set
+       columnname = value,
+       columnname = value
+       where id = <dynamicvalue>;
+
+      mysql> UPDATE STUDENT
+    -> SET
+    -> NAME ="RINA",
+    -> EMAIL = 'R@gmail.com'
+    -> WHERE
+    -> ID = 1;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM student;
++------+-------------+--------+-------+
+| ID   | EMAIL       | NAME   | PHONE |
++------+-------------+--------+-------+
+|    1 | R@gmail.com | RINA   | NULL  |
+|    2 | b@gmail.com | MITTAL | NULL  |
+|    3 | c@gmail.com | RIDDHI | NULL  |
++------+-------------+--------+-------+
+3 rows in set (0.01 sec)
+
+---------------------------------------------------------------------------
+1) primary key :
+    which is represent current table identity which we can connect 
+     which we can connect with another table.
+
+     mysql> CREATE TABLE EMP
+    -> (
+    -> ID INT PRIMARY KEY AUTO_INCREMENT,
+    -> NAME VARCHAR(20),
+    -> SALARY INT,
+    -> CITY VARCHAR(20)
+    -> );
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> SELECT * FROM EMP;
+Empty set (0.02 sec)
+
+mysql> SELECT * FROM EMP;
+Empty set (0.00 sec)
+
+mysql> INSERT INTO EMP
+    -> (NAME,SALARY,CITY)
+    -> VALUES
+    -> ('KUMKUM',25000,'AHM'),
+    -> ('RIDDHI',56000,'GODHARA'),
+    -> ('MINA',45000,'SURAT');
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM EMP;
++----+--------+--------+---------+
+| ID | NAME   | SALARY | CITY    |
++----+--------+--------+---------+
+|  1 | KUMKUM |  25000 | AHM     |
+|  2 | RIDDHI |  56000 | GODHARA |
+|  3 | MINA   |  45000 | SURAT   |
++----+--------+--------+---------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMP;
++----+--------+--------+---------+
+| ID | NAME   | SALARY | CITY    |
++----+--------+--------+---------+
+|  1 | KUMKUM |  25000 | AHM     |
+|  2 | RIDDHI |  56000 | GODHARA |
+|  3 | MINA   |  45000 | SURAT   |
++----+--------+--------+---------+
+
+------------------------------------------------------------------
+-----------------------------------------------------------------
+CONSTRAINTS :
+    A rule which is define which kind and what kind of
+     data we can store in table.
+
+ 1)PRIMARY KEY :
+     one table can have only 1 primary key rule
+     of primary key it must be unique and
+     not null.
+
+     1
+     1   X
+
+     1  
+         X
+     3
+===============================================================================
+
+2)UNIQUE : which prevent dublications
+
+     syntax :
+       fieldname datatype unique 
+
+ mysql> UPDATE EMP
+    -> SET
+    -> EMAIL = 'S@GMAIL.COM'
+    -> WHERE ID = 1;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM EMP;
++----+--------+--------+---------+-------------+
+| ID | NAME   | SALARY | CITY    | EMAIL       |
++----+--------+--------+---------+-------------+
+|  1 | KUMKUM |  25000 | AHM     | S@GMAIL.COM |
+|  2 | RIDDHI |  56000 | GODHARA | NULL        |
+|  3 | MINA   |  45000 | SURAT   | NULL        |
++----+--------+--------+---------+-------------+      
+
+mysql> UPDATE EMP
+    -> SET
+    -> EMAIL = 'S@GMAIL.COM'
+    -> WHERE NAME = "KUMKUM";
+Query OK, 0 rows affected (0.01 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> DESC EMP;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| ID     | int         | NO   | PRI | NULL    | auto_increment |
+| NAME   | varchar(20) | YES  |     | NULL    |                |
+| SALARY | int         | YES  |     | NULL    |                |
+| CITY   | varchar(20) | YES  |     | NULL    |                |
+| EMAIL  | varchar(20) | YES  | UNI | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+5 rows in set (0.08 sec)
+
+=======================================================================
+3)NOT NULL :
+    when we want specific field at insert time we can assign not null 
+
+syntax:
+     fieldname   datatype   not null;
+     
+     CREATE TABLE EMP 
+     (ID INT PRIMARY KEY AUTO_INCREMENT,
+     EMAIL VARCHAR(20) UNIQUE NOT NULL
+     );
+ 
+ mysql> ALTER TABLE EMP MODIFY NAME VARCHAR(20) NOT NULL;
+Query OK, 0 rows affected (0.78 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM EMP;
++----+--------+--------+---------+-------------+
+| ID | NAME   | SALARY | CITY    | EMAIL       |
++----+--------+--------+---------+-------------+
+|  1 | KUMKUM |  25000 | AHM     | S@GMAIL.COM |
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM |
+|  3 | MINA   |  45000 | SURAT   | NULL        |
++----+--------+--------+---------+-------------+
+3 rows in set (0.02 sec)
+
+mysql> DESC EMP;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| ID     | int         | NO   | PRI | NULL    | auto_increment |
+| NAME   | varchar(20) | NO   |     | NULL    |                |
+| SALARY | int         | YES  |     | NULL    |                |
+| CITY   | varchar(20) | YES  |     | NULL    |                |
+| EMAIL  | varchar(20) | YES  | UNI | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+5 rows in set (0.08 sec)
+
+mysql> INSERT INTO EMP
+    -> (NAME,SALARY,CITY)
+    -> VALUES
+    -> ('RIYA',34000,'AHM');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> DESC EMP;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| ID     | int         | NO   | PRI | NULL    | auto_increment |
+| NAME   | varchar(20) | NO   |     | NULL    |                |
+| SALARY | int         | YES  |     | NULL    |                |
+| CITY   | varchar(20) | YES  |     | NULL    |                |
+| EMAIL  | varchar(20) | YES  | UNI | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+4)DEFAULT:
+ IT WILL add automatic value whenever we insert record will null.
+
+            STATUS = "PENDING"
+
+ mysql> ALTER TABLE EMP ADD STATUS VARCHAR(20) DEFAULT "PENDING";
+
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC EMP;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| ID     | int         | NO   | PRI | NULL    | auto_increment |
+| NAME   | varchar(20) | NO   |     | NULL    |                |
+| SALARY | int         | YES  |     | NULL    |                |
+| CITY   | varchar(20) | YES  |     | NULL    |                |
+| EMAIL  | varchar(20) | YES  | UNI | NULL    |                |
+| STATUS | varchar(20) | YES  |     | PENDING |                |
++--------+-------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMP;
++----+--------+--------+---------+-------------+---------+
+| ID | NAME   | SALARY | CITY    | EMAIL       | STATUS  |
++----+--------+--------+---------+-------------+---------+
+|  1 | KUMKUM |  25000 | AHM     | S@GMAIL.COM | PENDING |
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM | PENDING |
+|  3 | MINA   |  45000 | SURAT   | NULL        | PENDING |
+|  4 | RIYA   |  34000 | AHM     | NULL        | PENDING |
++----+--------+--------+---------+-------------+---------+
+4 rows in set (0.00 sec)
+
+5)CHECK: 
+     this CONSTRAINTS which is used to validate value condition wise.
+
+  mysql> ALTER TABLE EMP ADD AGE INT;
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE EMP
+    -> ADD
+    -> CONSTRAINT AGE
+    -> CHECK (AGE>=18);
+Query OK, 5 rows affected (0.16 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> DESC EMP;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| ID     | int         | NO   | PRI | NULL    | auto_increment |
+| NAME   | varchar(20) | NO   |     | NULL    |                |
+| SALARY | int         | YES  |     | NULL    |                |
+| CITY   | varchar(20) | YES  |     | NULL    |                |
+| EMAIL  | varchar(20) | YES  | UNI | NULL    |                |
+| STATUS | varchar(20) | YES  |     | PENDING |                |
+| AGE    | int         | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> INSERT INTO EMP
+    -> (NAME,SALARY,CITY,EMAIL,AGE)
+    -> VALUES
+    -> ('HIMANI',46000,'SURAT','H@GMAIL.COM',5);
+ERROR 3819 (HY000): Check constraint 'AGE' is violated.
+mysql> INSERT INTO EMP
+    -> (NAME,SALARY,CITY,EMAIL,AGE)
+    ->  VALUES
+    ->  ('HIMANI',46000,'SURAT','H@GMAIL.COM',55);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> DESC EMP;
++--------+-------------+------+-----+---------+----------------+
+| Field  | Type        | Null | Key | Default | Extra          |
++--------+-------------+------+-----+---------+----------------+
+| ID     | int         | NO   | PRI | NULL    | auto_increment |
+| NAME   | varchar(20) | NO   |     | NULL    |                |
+| SALARY | int         | YES  |     | NULL    |                |
+| CITY   | varchar(20) | YES  |     | NULL    |                |
+| EMAIL  | varchar(20) | YES  | UNI | NULL    |                |
+| STATUS | varchar(20) | YES  |     | PENDING |                |
+| AGE    | int         | YES  |     | NULL    |                |
++--------+-------------+------+-----+---------+----------------+
+7 rows in set (0.01 sec)
+
+mysql> SELECT * FROM EMP;
++----+--------+--------+---------+--------------+---------+------+
+| ID | NAME   | SALARY | CITY    | EMAIL        | STATUS  | AGE  |
++----+--------+--------+---------+--------------+---------+------+
+|  1 | KUMKUM |  25000 | AHM     | S@GMAIL.COM  | PENDING | NULL |
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM  | PENDING | NULL |
+|  3 | MINA   |  45000 | SURAT   | NULL         | PENDING | NULL |
+|  4 | RIYA   |  34000 | AHM     | NULL         | PENDING | NULL |
+|  5 | SHREYA |  45000 | DELHI   | Sh@gmail.com | PENDING |   45 |
+|  6 | HIMANI |  46000 | SURAT   | H@GMAIL.COM  | PENDING |   55 |
++----+--------+--------+---------+--------------+---------+------+
+6 rows in set (0.00 sec)
+
+=============================================================
+6) FOREIGN KEY : 
+    which is mainly use to connect with another table .
+
+    when we want to provide relationship between two tables we have to use foreign key
+
+    create department
+    (
+        id int primary key auto_increment,
+        d_name varchar(20)
+    );
+     
+        1.IT
+        2.ADMIN
+
+    create emp
+    (
+        id int primary key auto_increment,
+        name varchar(20),
+        d_id int,
+        foreign key (d_id) references department(id)
+    );
