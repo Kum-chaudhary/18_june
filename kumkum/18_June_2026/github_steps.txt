@@ -1,0 +1,43 @@
+step 1 : login with your github account 
+
+step 2 : click on new button which is visible at right side top corner 
+
+step 3 : Create a new repository
+
+        Enter repository name : 18-jun-2026
+
+        Enter description : .... 
+
+step 4 : click on green button create repository 
+
+step 5 : open terminal 
+
+step 6 : git init 
+step 7 : git add . 
+
+step 8 : git commit -m 'commit msg'
+
+        -m : message "message" or 'message' 
+
+step 8 : git branch -M main 
+
+        -M : move / master branch name change 
+
+step 9 : git remote add origin location(copy from github)
+
+        git remote add origin  https://github.com/enji-coder/18-jun-2026.git
+
+
+step 10 : git push -u origin main
+
+
+git config --global user.name "Your New Name"
+git config --global user.email "yournewemail@gmail.com"
+
+--------------------------------------------
+after changes any thing in this folder 
+
+
+# git add . 
+# git commit -m "message" 
+# git push 

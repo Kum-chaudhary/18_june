@@ -1,0 +1,283 @@
+oop: object oriented programming system or structure
+1) class
+2) object
+3) encapsulation
+4) inheritance
+5) polymorphism
+6) aggregation
+7) abstraction
+
+------------------------------------
+1) class :
+   class is a userdefined data type which is contain similar
+   and dis-similar data elements at single location.
+
+   it same like structure.
+
+   syntax:
+    class <classname>
+    {
+        data member
+        member functions
+    };
+
+2) object : object is an instance of class using of
+          object we can access properties of class.
+
+          <classname>  <objectname>;
+          ---------------------------
+visibility modes or access specifier :
+ there are 3 visibility modes in c++
+
+ 1) public
+ 2) private
+ 3) protected
+
+ 1) public : we can access data member and member functions anywhere 
+    out side the class.
+
+2) private : only own class can access the properties of own class.
+
+3) protected:
+ only own class and child class can access the properties of class.
+----------------------------------------
+constructor:
+   is a special member function.
+   which is invoke automatically whenever we create object.
+
+   constructor name and class name both are same.
+
+   constructor can't be written in private mode.
+
+   syntax:
+     class <classname>
+     {
+        constructorname()
+        {
+
+        }
+     };
+
+     --------------------------------------------
+     constructor allocate memory to object
+
+destructor: means destroy object using of destructor does not 
+            return any value and does in written in private mode.
+
+            syntax:
+            class<classname>
+            {
+                <constructor>()  allocate the memory
+                {
+
+                }
+                ~<destructor>()   //cleanig the memory
+                {
+
+                }
+            };  
+----------------------------------------------------------
+2) parameterized constructor : constructor which accept
+      parameter.
+   
+    A parameterized constructor is a constructor that accepts 
+    arguments. It allows you to pass custom values to 
+    your class properties at the exact moment you 
+    create an object.
+
+   constructorName(parameter1,parameter2....)
+   {
+
+   }
+   -----------------------------------------------
+   *  this pointer :
+   refer current class properties               
+   -------------------------------
+   3) encapsulation:
+    it is similar like capsule.
+
+    which contain similar and dis-similar data elements at single entity.
+
+    encapsulation is a concept which achived by class.
+    ---------------------------------------------------
+
+    difference between function and methods.
+
+    function: function is a block of code that code are used to aggregation and 
+    again.
+
+    function are independent 
+    function declare outside the class.
+
+    method: method is a block of code that are used to again and again.
+        
+        methods are dependent on class and object.
+        method declare inside the class.
+  ---------------------------------------------------
+ getter-setter method:
+
+ ---------------------------------------------------
+4) inheritance:
+  inheritance is a most powerfull concept of oop concept.
+
+  inheritance means derived properties from one class to another class.
+
+  there is a parent and child relationship between class its called 
+  inheritance.
+
+  inheritance provided reusability .
+
+  using of inheritance we can reduce our code.
+  and we can save our development time.
+
+class A (parent)  (base)  (super)
+   |
+   v
+class B (child)  (derived)  (sub)
+
+syntax:
+  class classname
+  {
+    data member
+    member function
+  };
+  class classname: <access specifier> parentclass
+  {
+    data member
+    member function
+  }
+---------------------------------------------------------
+types of inheritance:
+
+there are 5 types of inheritance.
+
+1) single-level inheritance
+2) multi-level inheritance
+3) multiple inheritance
+4) hierachical inheritance 
+5) hybrid inheritance
+
+1) single-level inheritance:
+
+        class A 
+        |
+        v
+        class B
+
+2)multi-level inheritance:
+
+       class A 
+       |
+       V 
+       class B 
+       |
+       V 
+       Class C  
+
+3)multiple inheritance:
+   in real world this is not possible.
+
+   Parent1                    Parent2  (gardian)
+   |                           |
+   -----------------------------
+               |
+               V 
+             child   
+4)hierachical inheritance:
+
+                  Parent1
+                  |
+                  V 
+  ------------------------------------
+  |                                   |
+  v                                   V 
+  childA                             childB
+
+             RBI 
+             |      roi()
+             v
+    -------------------------
+    |                        |
+    V                         v
+    SBI                      BOB
+-----------------------------------------------------
+5) hybrid inheritance:
+          class A 
+            |
+            V 
+    ---------------------
+    |                    |
+    Class B            class C 
+    |                    |
+    ----------------------
+              |
+              V 
+            class D 
+
+combination of hierachical and multiple inheritance.
+
+there are one issue in hybrid inheritance 
+when we inherite class A in B and C class D class receive
+2 copies of class A 
+
+we need to inherite class A in virtual mode.
+
+-------------------------------------------------------
+5) polymorphism :
+       poly means many and morphism means forms.
+
+       polymorphism is derived from greek word.
+
+       which means one class or more class has same name methods.
+
+       there are mainly 2 types of polymorphism.
+
+       i) method overloading
+       ii) method overriding
+
+       i) method overloading:
+         one class can contain same name multiple methods
+         with different arguments.
+----------------------------------------------------
+method overriding:
+
+   when parent and child both have same name method 
+   its called method overriding. 
+--------------------------------------------------
+6)aggregation:
+
+   inheritance provide IS - A relationship
+
+   aggregation Provide HAS - A relationship
+
+   e.g., department has a faculty
+
+   provide reference of class  to another class.
+---------------------------------------------------------
+
+7) abstraction:
+   A abstraction is a most powerfull concept of oop system.
+
+   which is represent only few information not allocated background 
+   information.
+
+                  Parent a
+                    |
+                    v
+            --------------------
+            |                  |
+           ChildA          childB
+
+           land            land
+
+------------------------------------------------------
+*) pure virtual function:
+    function without only body means only function declration.
+
+    syntax:
+      virtual funname() = 0;
+
+abstract class:  A class which is contain pure virtual function.
+                 and abstraction which is achive by abstract class.       
+===========================================================
+                           

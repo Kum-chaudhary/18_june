@@ -1,0 +1,35 @@
+what is language ? 
+------------------------
+A way to communicate 
+
+what is program ? 
+--------------------------
+program is a set of instruction code for computer what to do and how to do ? 
+
+what is programing ? 
+--------------------------
+programing is a process to write a program , design a program , build or debug a program ..
+like , planning,  designing , managing etc.. 
+
+what is coding ? 
+---------------------------
+coding is a just a thing to write a piece of code or write a program. 
+
+=======================================================
+A                       B 
+human                   human 
+English                 Hindi 
+
+         Translator 
+
+------------------------------------
+Compiler : which translate whole source file 
+
+Interpreter : which convert code line by line executation. 
+
+
+C language is a compiler based programing language 
+C++ is a compiler based programing language 
+
+python is an Interpreter based programing language .
+

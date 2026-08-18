@@ -1,0 +1,28 @@
+c++ is an extended version of c language.
+
+c + 1 
+
+c++ contain all features and concepts of c programming and 
+add one more features which is call oop concept.
+
+================================================
+# : predefined
+
+include : to add something
+
+<iostream> : io : input output stream
+
+using namespace std;  // c++ ki standard library jo (std namespace me sidhe use) 
+                        jis me cin,cout,string.
+ void main() X : int main()
+ {
+    printf();
+     X 
+     cout<<"";
+ }
+ -----------------------------
+ variable declaration : middle of variable declaration
+  int num1=12;
+  int num2=3;
+  // num1 = 12
+  cout<<"num1 = "<<num1<<"and num2 = "<<num2<<endl;

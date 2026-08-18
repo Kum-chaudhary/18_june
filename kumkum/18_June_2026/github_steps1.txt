@@ -1,0 +1,33 @@
+whenever we do any changes in our report perform below commands
+
+step 1: git add .
+
+step 2: git commit -m "adding new topic"
+
+step 3: git push
+
+step 4: click on green button create repository
+
+step 5: open terminal
+
+step 6: git init 
+step 7: git add . 
+
+step 8: git commit -m 'commit msg'
+       -m: message "message" or 'message'
+step 8 :
+        git commit -m main
+        -M : move / master branch name changes
+
+step 9: git remote add origin location(copy from github)
+
+step 10: git puch -u origin main 
+
+git confing ---global user.name "Kumkum chaudhary"
+git confing --global user.email "kumkum3820@gmail.com"
+-----------------------------------------------
+after changes any thing in this folder
+
+# git add .
+# git commit -m "message"
+# git push
