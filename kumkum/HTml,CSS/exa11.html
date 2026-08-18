@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        table {
+            width: 70%;
+        }
+
+        h1 {
+
+            text-align: center;
+        }
+
+        tr,
+        td {
+            margin-top: 8px;
+            padding: 5px;
+        }
+
+        #submit {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post">
+        <table>
+            <tr>
+                <td>
+                    <h1>Registration form</h1>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label>Enter Your First Name :</label></td>
+                <td><input type="text" id="fname" name="fname" placeholder="e.g.,kumkum"></td>
+            </tr>
+            <tr>
+                <td><label>Enter Your Last Name :</label></td>
+                <td><input type="text" id="lname" name="lname" placeholder="e.g.,chaudhary"></td>
+            </tr>
+            <tr>
+                <td><label>Enter Your Email :</label></td>
+                <td><input type="email" id="email" name="email" placeholder="e.g.,exa@domail.com"></td>
+            </tr>
+            <tr>
+                <td><label>Enter Your Password :</label></td>
+                <td><input type="password" id="password" name="password"></td>
+            </tr>
+            <tr>
+                <td><label>Gender :</label></td>
+                <td><input type="radio" name="Gender" value="male">Male
+                    <input type="radio" name="Gender" value="female">Female
+                </td>
+
+            </tr>
+            <tr>
+                <td><label>Enter Your Contact :</label></td>
+                <td><input type="text" id="Contact" name="Contact"></td>
+            </tr>
+            <tr>
+                <td>
+                    <lable>Select city:</lable>
+                    <select id="city">
+                        <option disabled aria-readonly="true" selected>----Select city----</option>
+                        <option>Ahm</option>
+                        <option>Vadodara</option>
+                        <option>surat</option>
+                        <option>rajkot</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Select subject</label></td>
+                <td><input name="chkpython" value="python" type="checkbox">Python
+                    <input name="chkjava" value="java" type="checkbox">java
+                    <input name="chkflutter" value="flutter" type="checkbox">flutter
+                    <input name="chkdatascience" value="data science" type="checkbox">data science
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="submit" id="submit" />
+                    <input type="reset" value="reset" />
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</body>
+
+</html>

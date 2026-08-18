@@ -1,0 +1,144 @@
+html : hyper text markup language.
+
+    whenever we want to design webpages we must have to use html.
+
+-------------------------------------------------
+html is a collection of tags.
+
+   there are 2 types of tags.
+
+    1) singular tag
+    2) paired tag
+
+    there are only 3 tags are singular.
+       <img>
+       <hr>
+       <br>
+
+       paired tags: <html>.....</html>
+                <openingtag>....</closingtag>
+
+===================================================
+structure of html webpage:
+  
+  <html>
+       <head>
+       <title>   </title>
+  </head>
+       <body>
+
+  </body>
+  </html>
+======================================================
+formatting elements:
+
+ <h1></h1>
+ <h2></h2>
+ <h3></h3>
+ <h4></h4>
+ <h5></h5>
+ <h6></h6>
+ ======================================
+ paragraph:
+
+ <p>paragraph </p>
+ ======================================
+ formatting tags:
+   <i> :italian
+   <b> :bold
+   <mark>:highlight
+   <u> :underline
+-----------------------------------------
+<sub> 10th
+<sup> h2o
+---------------------------------------
+list elements:  there are 3 types of list
+
+  1) unorder list
+  2) order list
+  3) description list
+
+  1) unorder list: circle,disc,squre,none
+      <ul> : unorder
+      <li> : list of items
+
+ 2) order list: upper-roman,lower-alpha,none
+      <ul> : order
+      <li> : list of items
+
+ 3) discription list:
+     <dl> : description list
+     <dt> : description tag
+     <dd> : description details
+
+===========================================
+<table> : to represent table tag.
+
+<thead> : table heading
+
+<tbody> : table body
+
+<tr> : table row
+
+<th> : table header for row
+
+<td> : table data
+=======================================================================
+ *****           CSS: cascading style sheet    *****
+ 
+     which is use to design webpages.
+
+     there are 3 types to apply style on webpages.
+
+     1) inline CSS
+     2) External CSS
+     3) internal CSS
+
+     1) inline css :
+         we can provide css in specific element.
+
+         syntax: 
+
+          <element style="Property:value">
+     2) internal css:
+
+        <style>
+         elementname
+         {
+          Property : value;
+         }
+         </style>
+============================================
+selectors:
+
+1) element selector :
+   h1,h2,h3,p...etc element selector.
+
+2) class selector :
+   .classname
+   {
+
+   } 
+
+3) id selector :
+   #idname
+   {
+
+   } 
+
+4) group selector: 
+   element1,element2
+   {
+
+   }
+5) universal selector:
+
+ *{
+   Property:value;
+ }
+----------------------------------------------
+   
+
+
+
+
