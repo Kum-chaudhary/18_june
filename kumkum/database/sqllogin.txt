@@ -636,3 +636,301 @@ mysql> SELECT * FROM EMP;
         d_id int,
         foreign key (d_id) references department(id)
     );
+
+=================================================================================
+iii) DELETE : 
+      WHEN WE want to remove specific row or records from 
+      the existing table we have to use delete command.   
+
+      syntax:
+       DELETE FROM <tablename> where columnname = value; 
+
+   mysql> SELECT * FROM EMP;
++----+--------+--------+---------+--------------+---------+------+
+| ID | NAME   | SALARY | CITY    | EMAIL        | STATUS  | AGE  |
++----+--------+--------+---------+--------------+---------+------+
+|  1 | KUMKUM |  25000 | AHM     | S@GMAIL.COM  | PENDING | NULL |
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM  | PENDING | NULL |
+|  3 | MINA   |  45000 | SURAT   | NULL         | PENDING | NULL |
+|  4 | RIYA   |  34000 | AHM     | NULL         | PENDING | NULL |
+|  5 | SHREYA |  45000 | DELHI   | Sh@gmail.com | PENDING |   45 |
+|  6 | HIMANI |  46000 | SURAT   | H@GMAIL.COM  | PENDING |   55 |
++----+--------+--------+---------+--------------+---------+------+
+6 rows in set (0.05 sec)
+
+mysql> DELETE FROM EMP WHERE ID = 4;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> SELECT * FROM EMP;
++----+--------+--------+---------+--------------+---------+------+
+| ID | NAME   | SALARY | CITY    | EMAIL        | STATUS  | AGE  |
++----+--------+--------+---------+--------------+---------+------+
+|  1 | KUMKUM |  25000 | AHM     | S@GMAIL.COM  | PENDING | NULL |
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM  | PENDING | NULL |
+|  3 | MINA   |  45000 | SURAT   | NULL         | PENDING | NULL |
+|  5 | SHREYA |  45000 | DELHI   | Sh@gmail.com | PENDING |   45 |
+|  6 | HIMANI |  46000 | SURAT   | H@GMAIL.COM  | PENDING |   55 |
++----+--------+--------+---------+--------------+---------+------+
+5 rows in set (0.00 sec)
+
+====================================================================================
+3) DQL : DATA QUERY LANGUAGE.
+
+most powerfull concept of sql language.
+
+using of DQL we can retrieve data from the database with specific condition wise.
+
+i) select 
+
+when we want to retrieve all data from the table.
+
+ syntax: 
+     * ->  UNIVERSAL
+
+   SELECT * FROM <TABLENAME>;
+
+
+=================================================================================
+
+ => WHEN WE WANT TO SPECIFIC DATA / FIELD.
+
+   SELECT column1,column2,column3,....FROM <TABLENAME>;   
+
+   mysql> SELECT NAME,CITY,EMAIL FROM EMP;
++--------+---------+--------------+
+| NAME   | CITY    | EMAIL        |
++--------+---------+--------------+
+| KUMKUM | AHM     | S@GMAIL.COM  |
+| RIDDHI | GODHARA | A@GMAIL.COM  |
+| MINA   | SURAT   | NULL         |
+| SHREYA | DELHI   | Sh@gmail.com |
+| HIMANI | SURAT   | H@GMAIL.COM  |
++--------+---------+--------------+
+5 rows in set (0.00 sec)
+
+mysql> ALTER TABLE EMP ADD DEPARTMENT VARCHAR(20);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM EMP;
++----+--------+--------+---------+--------------+---------+------+------------+
+| ID | NAME   | SALARY | CITY    | EMAIL        | STATUS  | AGE  | DEPARTMENT |
++----+--------+--------+---------+--------------+---------+------+------------+
+|  1 | KUMKUM |  25000 | AHM     | S@GMAIL.COM  | PENDING | NULL | NULL       |
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM  | PENDING | NULL | NULL       |
+|  3 | MINA   |  45000 | SURAT   | NULL         | PENDING | NULL | NULL       |
+|  5 | SHREYA |  45000 | DELHI   | Sh@gmail.com | PENDING |   45 | NULL       |
+|  6 | HIMANI |  46000 | SURAT   | H@GMAIL.COM  | PENDING |   55 | NULL       |
++----+--------+--------+---------+--------------+---------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> UPDATE EMP SET DEPARTMENT = "IT" WHERE ID = 1;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE EMP SET DEPARTMENT = "HR" WHERE ID = 2;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE EMP SET DEPARTMENT = "IT" WHERE ID = 3;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> DESC EMP;
++------------+-------------+------+-----+---------+----------------+
+| Field      | Type        | Null | Key | Default | Extra          |
++------------+-------------+------+-----+---------+----------------+
+| ID         | int         | NO   | PRI | NULL    | auto_increment |
+| NAME       | varchar(20) | NO   |     | NULL    |                |
+| SALARY     | int         | YES  |     | NULL    |                |
+| CITY       | varchar(20) | YES  |     | NULL    |                |
+| EMAIL      | varchar(20) | YES  | UNI | NULL    |                |
+| STATUS     | varchar(20) | YES  |     | PENDING |                |
+| AGE        | int         | YES  |     | NULL    |                |
+| DEPARTMENT | varchar(20) | YES  |     | NULL    |                |
++------------+-------------+------+-----+---------+----------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMP;
++----+--------+--------+---------+--------------+---------+------+------------+
+| ID | NAME   | SALARY | CITY    | EMAIL        | STATUS  | AGE  | DEPARTMENT |
++----+--------+--------+---------+--------------+---------+------+------------+
+|  1 | KUMKUM |  25000 | AHM     | S@GMAIL.COM  | PENDING | NULL | IT         |
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM  | PENDING | NULL | HR         |
+|  3 | MINA   |  45000 | SURAT   | NULL         | PENDING | NULL | IT         |
+|  5 | SHREYA |  45000 | DELHI   | Sh@gmail.com | PENDING |   45 | NULL       |
+|  6 | HIMANI |  46000 | SURAT   | H@GMAIL.COM  | PENDING |   55 | NULL       |
++----+--------+--------+---------+--------------+---------+------+------------+
+5 rows in set (0.00 sec)
+
+FETCH DISTINCT RECORD FROM THE TABLE.
+mysql> SELECT DISTINCT DEPARTMENT FROM EMP;
++------------+
+| DEPARTMENT |
++------------+
+| IT         |
+| HR         |
+| NULL       |
++------------+
+3 rows in set (0.01 sec)
+
+========================================================
+OPERATOR : 
+    
+     = : COMPARISION EQUALITY
+    < 
+    >
+    <=
+    >=
+    !=
+
+mysql> SELECT * FROM EMP WHERE SALARY > 50000;
++----+--------+--------+---------+-------------+---------+------+------------+
+| ID | NAME   | SALARY | CITY    | EMAIL       | STATUS  | AGE  | DEPARTMENT |
++----+--------+--------+---------+-------------+---------+------+------------+
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM | PENDING | NULL | HR         |
++----+--------+--------+---------+-------------+---------+------+------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM EMP WHERE SALARY >= 20000;
++----+--------+--------+---------+--------------+---------+------+------------+
+| ID | NAME   | SALARY | CITY    | EMAIL        | STATUS  | AGE  | DEPARTMENT |
++----+--------+--------+---------+--------------+---------+------+------------+
+|  1 | KUMKUM |  25000 | AHM     | S@GMAIL.COM  | PENDING | NULL | IT         |
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM  | PENDING | NULL | HR         |
+|  3 | MINA   |  45000 | SURAT   | NULL         | PENDING | NULL | IT         |
+|  5 | SHREYA |  45000 | DELHI   | Sh@gmail.com | PENDING |   45 | NULL       |
+|  6 | HIMANI |  46000 | SURAT   | H@GMAIL.COM  | PENDING |   55 | NULL       |
++----+--------+--------+---------+--------------+---------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT * FROM EMP WHERE DEPARTMENT != "IT";
++----+--------+--------+---------+-------------+---------+------+------------+
+| ID | NAME   | SALARY | CITY    | EMAIL       | STATUS  | AGE  | DEPARTMENT |
++----+--------+--------+---------+-------------+---------+------+------------+
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM | PENDING | NULL | HR         |
++----+--------+--------+---------+-------------+---------+------+------------+
+1 row in set (0.00 sec)
+
+=================================================================
+update emp set age = 25 where id = 1;
+
+mysql> update emp set age = 25 where id = 1;
+Query OK, 1 row affected (0.23 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set age = 35 where id = 2;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set age = 30 where id = 3;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp set age = 20 where id = 4;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from emp;
++----+--------+--------+---------+--------------+---------+------+------------+
+| ID | NAME   | SALARY | CITY    | EMAIL        | STATUS  | AGE  | DEPARTMENT |
++----+--------+--------+---------+--------------+---------+------+------------+
+|  1 | KUMKUM |  25000 | AHM     | S@GMAIL.COM  | PENDING |   25 | IT         |
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM  | PENDING |   35 | HR         |
+|  3 | MINA   |  45000 | SURAT   | NULL         | PENDING |   30 | IT         |
+|  5 | SHREYA |  45000 | DELHI   | Sh@gmail.com | PENDING |   45 | NULL       |
+|  6 | HIMANI |  46000 | SURAT   | H@GMAIL.COM  | PENDING |   55 | NULL       |
++----+--------+--------+---------+--------------+---------+------+------------+
+5 rows in set (0.02 sec)
+
+logical operator:
+  
+  AND : check both the condition and make sure both are true.
+  OR : need one or more condition true.
+  NOT: except this
+
+1) AND : 
+
+SELECT * FROM EMP WHERE CITY = "AHM" AND AGE >= 20;
+
+mysql> SELECT * FROM EMP WHERE CITY = "AHM" AND AGE >= 20;
++----+--------+--------+------+-------------+---------+------+------------+
+| ID | NAME   | SALARY | CITY | EMAIL       | STATUS  | AGE  | DEPARTMENT |
++----+--------+--------+------+-------------+---------+------+------------+
+|  1 | KUMKUM |  25000 | AHM  | S@GMAIL.COM | PENDING |   25 | IT         |
++----+--------+--------+------+-------------+---------+------+------------+
+1 row in set (0.03 sec)
+
+E.G.,
+    student
+
+     email  password 
+
+  SELECT * FROM STUDENT WHERE EMAIL="" AND PASSWORD= ;
+
+2) OR : 
+
+SELECT * FROM EMP WHERE DEPARTMENT="HR" OR DEPARTMENT="ADMIN";
++----+--------+--------+---------+-------------+---------+------+------------+
+| ID | NAME   | SALARY | CITY    | EMAIL       | STATUS  | AGE  | DEPARTMENT |
++----+--------+--------+---------+-------------+---------+------+------------+
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM | PENDING |   35 | HR         |
++----+--------+--------+---------+-------------+---------+------+------------+
+1 row in set (0.00 sec)
+
+3) NOT :
+
+mysql> SELECT * FROM EMP WHERE NOT DEPARTMENT="IT";
++----+--------+--------+---------+-------------+---------+------+------------+
+| ID | NAME   | SALARY | CITY    | EMAIL       | STATUS  | AGE  | DEPARTMENT |
++----+--------+--------+---------+-------------+---------+------+------------+
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM | PENDING |   35 | HR         |
+|  7 | RIMA   |  56000 | DELHI   | R@GMAIL.COM | PENDING |   34 | SALES      |
+|  8 | KRINA  |  50000 | MUMBAI  | K@GMAIL.COM | PENDING |   44 | SALES      |
++----+--------+--------+---------+-------------+---------+------+------------+
+3 rows in set (0.00 sec)
+-------------------------------------------------------------------------------------
+MEMBERSHIP OPERATOR : IN,NOT IN
+
+1) IN OPERATOR:
+
+mysql> SELECT * FROM EMP WHERE CITY IN("SURAT","DELHI");
++----+--------+--------+-------+--------------+---------+------+------------+
+| ID | NAME   | SALARY | CITY  | EMAIL        | STATUS  | AGE  | DEPARTMENT |
++----+--------+--------+-------+--------------+---------+------+------------+
+|  3 | MINA   |  45000 | SURAT | NULL         | PENDING |   30 | IT         |
+|  5 | SHREYA |  45000 | DELHI | Sh@gmail.com | PENDING |   45 | NULL       |
+|  6 | HIMANI |  46000 | SURAT | H@GMAIL.COM  | PENDING |   55 | NULL       |
+|  7 | RIMA   |  56000 | DELHI | R@GMAIL.COM  | PENDING |   34 | SALES      |
++----+--------+--------+-------+--------------+---------+------+------------+
+4 rows in set (0.01 sec)
+
+2) NOT IN :
+
+mysql> SELECT * FROM EMP WHERE DEPARTMENT NOT IN("IT","HR");
++----+-------+--------+--------+-------------+---------+------+------------+
+| ID | NAME  | SALARY | CITY   | EMAIL       | STATUS  | AGE  | DEPARTMENT |
++----+-------+--------+--------+-------------+---------+------+------------+
+|  7 | RIMA  |  56000 | DELHI  | R@GMAIL.COM | PENDING |   34 | SALES      |
+|  8 | KRINA |  50000 | MUMBAI | K@GMAIL.COM | PENDING |   44 | SALES      |
++----+-------+--------+--------+-------------+---------+------+------------+
+2 rows in set (0.00 sec)
+
+---------------------------------------------------------------------------
+BETWEEN :
+
+mysql> SELECT * FROM EMP WHERE SALARY BETWEEN 40000 AND 60000;
++----+--------+--------+---------+--------------+---------+------+------------+
+| ID | NAME   | SALARY | CITY    | EMAIL        | STATUS  | AGE  | DEPARTMENT |
++----+--------+--------+---------+--------------+---------+------+------------+
+|  2 | RIDDHI |  56000 | GODHARA | A@GMAIL.COM  | PENDING |   35 | HR         |
+|  3 | MINA   |  45000 | SURAT   | NULL         | PENDING |   30 | IT         |
+|  5 | SHREYA |  45000 | DELHI   | Sh@gmail.com | PENDING |   45 | NULL       |
+|  6 | HIMANI |  46000 | SURAT   | H@GMAIL.COM  | PENDING |   55 | NULL       |
+|  7 | RIMA   |  56000 | DELHI   | R@GMAIL.COM  | PENDING |   34 | SALES      |
+|  8 | KRINA  |  50000 | MUMBAI  | K@GMAIL.COM  | PENDING |   44 | SALES      |
++----+--------+--------+---------+--------------+---------+------+------------+
+6 rows in set (0.01 sec)
+
+-------------------------------------------------------------------
+
